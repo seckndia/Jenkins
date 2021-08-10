@@ -10,22 +10,10 @@ services:
             - '443:8443'
             - '50000:50000'
         volumes:
-            - /home/khadija/projetOdoo/projet_jenkins/srv/data/jenkins_data:/jenkins_home
-            - /home/khadija/projetOdoo/projet_jenkins/srv/data/jenkins:/jenkins_config
-
-    Docker:
-        image: 'docker:latest'
-        container_name: "docker"
-    
-        volumes:
-            - /home/khadija/projetOdoo/projet_jenkins/srv/data/vdocker://var/lib/docker
-        
-        
-
+            - jenkins_data:/var/jenkins_home
+            - /var/run/docker.sock:/var/run/docker.sock 
 volumes:
     jenkins_data:
         driver: local
-    jenkins:
-        driver: local
-    vdocker:
-         driver: local
+
+   
